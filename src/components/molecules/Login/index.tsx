@@ -24,9 +24,6 @@ export const LoginForm = () => {
         redirectTo: '/feed',
       });
 
-      if (result?.error) {
-        setErrors({ submit: 'Credenciales inválidas' });
-      }
     } finally {
       setIsLoading(false);
     }
