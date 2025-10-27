@@ -1,7 +1,6 @@
 "use client";
 import { TextArea } from "@/components/atoms/TextArea";
 import { Button } from "@/components/atoms/Button";
-import { Input } from "@/components/atoms/Input";
 import { InputFile } from "@/components/atoms/InputFile";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
@@ -107,28 +106,6 @@ export const CommentsForm = ({ postId }: CommentsFormProps) => {
             >
               Post comment
             </Button>
-            <div className="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
-              <Button
-                action={() => {
-                  const input = document.querySelector("input#imageUpload");
-                  if (input) (input as HTMLInputElement).click();
-                }}
-                variant="icon"
-                type="button"
-                className="inline-flex justify-center items-center p-2 text-platinum/80 rounded-sm cursor-pointer hover:text-platinum hover:bg-gray-100 dark:text-gray-400"
-              >
-                <svg
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 18"
-                >
-                  <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                </svg>
-              </Button>
-              <Input className="hidden" id="imageUpload" type="file" />
-            </div>
           </div>
           {error.general && (
             <p className="px-3 py-1 text-xs text-red-400 tracking-wide font-bold">
