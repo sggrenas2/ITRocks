@@ -1,7 +1,19 @@
+'use client';
 import { LoginForm } from '@/components/molecules/Login';
 import { SocialSignIn } from '@/components/molecules/SocialSignIn';
+import {useEffect, useState } from 'react';
 
 export const LoginCard = () => {
+
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const errorParam = queryParams.get('error');
+    if (errorParam) {
+      setError(decodeURIComponent(errorParam));
+    }
+  }, []);
 
   return (
     <div className="rounded-lg bg-white p-8 shadow-lg">
@@ -22,6 +34,12 @@ export const LoginCard = () => {
         </div>
         <SocialSignIn />
       </div>
+      {
+        error && (
+          <div className="mt-4 rounded-md bg-red-50 p-4">
+            <p className="text-sm text-red-custom">Ocurrio un error, por favor revisa tus datos e intentalo de nuevo</p>
+          </div>)
+      }
     </div>
   );
 };
