@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { Input } from './index';
 
+interface StorybookProps extends InputProps {
+  value?: string;
+  type?: string;
+  placeholder?: string;
+  required?: boolean;
+}
+
 const meta = {
   title: 'Atoms/Input',
   component: Input,
@@ -42,11 +49,27 @@ const meta = {
         type: { summary: 'string' },
       }
     },
+    type: {
+      control: { type: 'text' },
+      description: 'Tipo de campo de entrada (attributo type nativo de html)',
+      table: {
+        defaultValue: { summary: "'text'" },
+        type: { summary: 'string' },
+      }
+    },
+    value: {
+      control: { type: 'text' },
+      description: 'Valor del campo de entrada (attributo value nativo de html)',
+      table: {
+        defaultValue: { summary: "''" },
+        type: { summary: 'string' },
+      }
+    },
   }
-} satisfies Meta<typeof Input>;
+} satisfies Meta<StorybookProps>;
 
 export default meta;
-type Story = StoryObj<InputProps>;
+type Story = StoryObj<StorybookProps>;
 
 export const Default: Story = {
   args: {
