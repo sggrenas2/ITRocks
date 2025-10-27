@@ -1,6 +1,7 @@
+import { ButtonProps } from "@/types/components/atoms/button";
 import clsx from "clsx";
 
-const getClasses = ({variant, size, isLoading}:ButtonProps) => {
+const getClasses = ({variant, size, isLoading}:Partial<ButtonProps>) => {
     return clsx(
         'overflow-hidden truncate rounded-[1rem] shadow-button backdrop-filter backdrop-blur-lg rounded-md px-4 py-2 transition-colors',
         {
