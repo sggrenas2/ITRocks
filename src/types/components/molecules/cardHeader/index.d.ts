@@ -1,0 +1,3 @@
+interface CardHeaderProps {
+    id: number;
+}
