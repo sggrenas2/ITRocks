@@ -1,11 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
 import ProfileReducer from '../features/profile/profileSlice';
+import AuthReducer from '../features/auth/authSlice'
+import PostsReducer from '../features/posts/postsSlice'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      profile: ProfileReducer
-    }
+      profile: ProfileReducer,
+      auth: AuthReducer,
+      posts: PostsReducer
+    },
   })
 }
 
