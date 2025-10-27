@@ -1,0 +1,3 @@
+interface CommentCardProps {
+    comment: Comments;
+}
