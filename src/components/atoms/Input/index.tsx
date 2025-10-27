@@ -6,6 +6,7 @@ export const Input = ({
   label = "name",
   error = "ocurrio un error",
   sizeInput = "full",
+  className,
   ...props
 }: InputProps) => {
   const [isValid, setIsValid] = React.useState<boolean>(true);
@@ -25,7 +26,7 @@ export const Input = ({
   const classes = getClasses({ sizeInput, isValid });
 
   return (
-    <div className={`flex flex-col gap-1 ${props.className || ""}`}>
+    <div className={`flex flex-col gap-1 ${className || ""}`}>
       {label && <label className="text-sm font-medium text-oxford-blue">{label}</label>}
       <input className={`${classes}`} onInvalid={handleError} {...props} />
       {!isValid && <span className="text-xs text-red-custom">{error}</span>}
