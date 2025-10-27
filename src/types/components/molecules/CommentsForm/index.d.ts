@@ -1,3 +1,3 @@
 interface CommentsFormProps {
-  postId: Pick<Post, 'post_id'>;
+  postId: Pick<Post, 'post_id'> | number;
 }

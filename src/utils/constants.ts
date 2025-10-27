@@ -35,4 +35,5 @@ export const MOCKED_USERS:MockedUsers  = {
 }
 
 export { Posts, Comments }
+export const SALT_ROUNDS = 10;
 

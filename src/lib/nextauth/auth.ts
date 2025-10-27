@@ -1,7 +1,9 @@
-import NextAuth from "next-auth";
+import NextAuth, { Session } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Twitter from "next-auth/providers/twitter";
 import { validateUser } from "@/utils/validators"
+import { JWT } from "@auth/core/jwt";
+import { User } from "@auth/core/types";
 
 export const authOptions = {
   pages:{
@@ -34,14 +36,15 @@ export const authOptions = {
     }),
   ],
   callbacks:{
-    jwt: ({ token, user }) => {
+    jwt: ({ token, user }: { token: JWT; user: User }) => {
       if(user){
         token.id = user.id
       }
       return token;
     },
-    session: ({session, token}) => {
-      session.user.id = token.id as string
+    session: ({session, token}:{session: Session; token: JWT}) => {
+      if(session.user)
+        session.user.id = token.id as string
       return session
     }
   }
